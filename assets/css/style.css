@@ -8,6 +8,10 @@ body{
     color: white;
 }
 
+header{
+    text-align: center;
+}
+
 #container {
     text-align: center;
     padding: 20px;
@@ -15,6 +19,42 @@ body{
 
 .row{
     display: flex;
+    display: none;
     flex-direction: row;
     justify-content: space-evenly;
+}
+
+#liccorne, #lapin{
+    width: 20%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+#dialogueBox{
+    display: none;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    margin-top: 20px;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+button{
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #ffffff;
+}
+#nextButton{
+    display: none;
+}
+#restartButton{
+    display: none;
 }
