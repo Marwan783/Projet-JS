@@ -36,29 +36,29 @@ document.getElementById('nextButton').addEventListener('click', () => {
 
 function displayNextLine(){
     if(currentIndex < DIALOGUE.length){
-        // Récupère l'objet de dialogue correspondant à l'index actuel.
         const LINE = DIALOGUE[currentIndex];
-
-        // Sélectionne la boîte de dialogue dans le DOM.
         const DIALOGUEBOX = document.getElementById('dialogueBox');
-
-        // Supprimer tout le contenu précédent dans la boîte de dialogue
         DIALOGUEBOX.innerHTML = '';
-
-        // Crée un nouvel élément de paragraphe pour afficher le texte.
         const P = document.createElement('p'); 
-        
-        // Remplit le paragraphe avec le texte du dialogue actuel.
         P.textContent = `${LINE.text}`
-
-        // Ajoute le paragraphe avec le texte à la boîte de dialogue dans le DOM.
         DIALOGUEBOX.appendChild(P);
+        if(LINE.user === "Licorne Codeuse"){
+            // Associe la classe 'unicorn' au paragraphe pour le styliser (texte en rose).
+            P.className = 'unicorn';
+            // Ajoute une bordure rose autour de l'image de la Licorne.
+            document.getElementById('unicornImg').classList.add('highlight');
+            // Enlève la bordure autour de l'image du Lapin Bug.
+            document.getElementById('rabbitImg').classList.remove('highlight')
+
+        }else if (LINE.user === "Lapin Bug"){
+            // Associe la classe 'rabbit' au paragraphe pour le styliser (texte en bleu).
+            P.className = 'rabbit';
+            // Ajoute une bordure bleue autour de l'image du Lapin.
+            document.getElementById('rabbitImg').classList.add('highlight')
+            // Enlève la bordure autour de l'image de la Licorne.
+            document.getElementById('unicornImg').classList.remove('highlight');
+        }
         document.getElementById('dialogueBox').style.color = "black";
-        
-        
-        
-        
-        
         console.log(LINE.text);
         currentIndex ++;
     }else{
@@ -66,3 +66,15 @@ function displayNextLine(){
         document.getElementById('restartButton').style.display = 'inline-block';
     }
 }
+
+document.getElementById('restartButton').addEventListener('click', () => {
+    document.getElementById('welcomeText').style.display = 'block';
+    document.getElementById('restartButton').style.display = 'none';  
+    document.getElementById('startButton').style.display = 'inline-block';
+    document.getElementById('dialogueBox').style.display = 'none';
+    document.getElementById('unicornImg').style.display = 'none';
+    document.getElementById('rabbitImg').style.display = 'none';
+    document.getElementById('nextButton').style.display = 'none';
+    currentIndex = 0;
+
+})
